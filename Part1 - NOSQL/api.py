@@ -77,13 +77,16 @@ class DelTodoTask(Resource):
 class UpdateTodoTask(Resource):
     def get(self, num):
         return {'Updated task:': num}
+class AllTodoTask(Resource):
+    def get(self, num):
+        return {'Updated task:': num}
 
 api.add_resource(TODO, "/TODO/api/v1.0/")
 api.add_resource(GetTodoTask, "/TODO/api/v1.0/task/<int:num>")
 api.add_resource(AddTodoTask, "/TODO/api/v1.0/task/add")
 api.add_resource(DelTodoTask, "/TODO/api/v1.0/task/delete/<int:num>")
 api.add_resource(UpdateTodoTask, "/TODO/api/v1.0/task/update/<int:num>")
-
+api.add_resource(AllTodoTask, "/TODO/api/v1.0/task/all")
 if __name__ == '__main__':
     app.run(debug=True)
     #app.run(debug=True, port=11111)
