@@ -11,13 +11,30 @@
 <body>
     <h1> Demo form for submiting data</h1>
     <form method="POST" action="todo/api/v1.0/tasks">
-        Tilte <input type="Text" name="title" ><br>
-        Description <textarea name="discription"></textarea>
+        Tilte <input type="Text" name="title" id="title" ><br>
+        Description <textarea name="discription" id="discription"></textarea>
         <br>
         <input type="submit" value="submit">
     </form>
    
+    <button onclick="sendPut()">Submit</button>
+   <script>
+       function sendPut(){
+           
+           var title=document.querySelector('#title').value;
+           var discription = document.querySelector('#discription').value;
+           var obj={title:title,discription:discription}
+           fetch("todo/api/v1.0/tasks/1",{
+               method:'DELETE',
+               headers: {
+            "Content-Type": "application/json",
+            // "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body:JSON.stringify({title:"This is title"})
+           });
+       }
    </script>
+   
    
 </body>
 </html>
