@@ -1,27 +1,37 @@
-import pymongo
-from pymongo import MongoClient
+import grpc
+from concurrent import futures
+import time
+
+# import the generated classes
 import todo_pb2
-MONGODB_URI = "mongodb://awais1:awais1@ds121652.mlab.com:21652/my_todo_list"
+import todo_pb2_grpc
 
-client = MongoClient(MONGODB_URI, connectTimeoutMS=30000)
-db = client.get_database("my_todo_list")
-user_records = db.todo
+# File that contain main methods
+import todo_func
+from astroid.tests.testdata.python2.data.all import name
+
+def get_user(db,tskid):
+    for usr in db:
+        if tskid == usr['userid']:
+            return usr
 
 
-def List_database():
-    records = user_records.find({})
-    tsk_list = []
-    mydict={}
-    for tsk in records:        
-        if tsk['done']==True:flag=True
-        else:flag=False
-        print(tsk['note'])
-        task=None
-        task = todo_pb2.Todo(
-            id=str(tsk['taskid']),
-            title=tsk['title'],
-            description=tsk['note'])
-        tsk_list.append(task)
-    todolist = todo_pb2.TodoList()
-    todolist = tsk_list
-    return todolist
+class TodoServicer(todo_pb2_grpc.TodosServiceServicer):
+    
+    def __init__(self):
+        self.db = todo_func.List_database()
+    
+    def List(self,request,context):
+        response = todo_pb2.TodoList
+        response.todo = db
+        if response is None:
+            return todo_pb2.Todo(id=request,title="")
+        else:
+            return response
+        
+    def Get(self,request,context):
+        response = get_user(self.db, request)
+        if response is None:
+            return todo_pb2.Todo(id=request,title="")
+        else:
+            return response        
