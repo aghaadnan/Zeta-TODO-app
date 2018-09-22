@@ -8,13 +8,11 @@ import todo_pb2_grpc
 
 # File that contain main methods
 import todo_func
-from astroid.tests.testdata.python2.data.all import name
 
 def get_task(db,tskid):
     for usr in db:
-        if tskid == usr['taskid']:
+        if usr.id == str(tskid):
             return usr
-
 
 class TodoServicer(todo_pb2_grpc.TodosServiceServicer):
     
@@ -22,14 +20,17 @@ class TodoServicer(todo_pb2_grpc.TodosServiceServicer):
         self.db = todo_func.List_database()
     
     def List(self,request,context):
+        res = todo_pb2.TodoList()
         response = self.db
+        res = response
         if response is None or response == []:
             return todo_pb2.Empty()
         else:
-            return response
+            return res
         
     def Get(self,request,context):
-        response = get_task(self.db, request)
+        
+        response = todo_func.Get_Database(request.id)
         if response is None:
             return todo_pb2.Todo(id=request,title="")
         else:
