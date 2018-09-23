@@ -9,11 +9,6 @@ import todo_pb2_grpc
 # File that contain main methods
 import todo_func
 
-def get_task(db,tskid):
-    for usr in db:
-        if usr.id == str(tskid):
-            return usr
-
 class TodoServicer(todo_pb2_grpc.TodosServiceServicer):
     
     def __init__(self):
@@ -29,12 +24,12 @@ class TodoServicer(todo_pb2_grpc.TodosServiceServicer):
             return res
         
     def Get(self,request,context):
-        
         response = todo_func.Get_Database(request.id)
         if response is None:
             return todo_pb2.Todo(id=request,title="")
         else:
             return response
+    
         
 # create a gRPC server
 server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
