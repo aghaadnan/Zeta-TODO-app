@@ -12,39 +12,30 @@ def List_database():
     records = user_records.find({})
    
     tsk_list = todo_pb2.TodoList()
-    mydict={}
+
     for tsk in records:
         tsk_list.todo.add(
             id=str(tsk['taskid']),            
             title=tsk['title'],
             description=tsk['note'],
             done=tsk['done'])
-        #lis.append(task)
-    #todolist = tsk_list.todo.extend(lis)
-    
-    #print(todolist)
-    '''for usr in todolist:
-        if usr.id == '1':
-            print(usr)
-    
-    return todolist'''
-    #print(tsk_list)
-    #print(lis)
     return tsk_list
 
 def Get_Database(id):
-    records = user_records.find({'taskid':id})
+    records = user_records.find({'taskid':int(id)})
     #return records
     tsk_list = todo_pb2.TodoList()
-    mydict={}
+    
     for tsk in records:
         tsk_list.todo.add(
             id=str(tsk['taskid']),            
             title=tsk['title'],
             description=tsk['note'],
             done=tsk['done'])
-    print(tsk_list)
-           
-#List_database()
-#Get_Database(1)  
+    '''tsk_list obj doesnot print any "done" field when we return full obj but you can explicitly print it '''
+    ###print(tsk_list.todo[0].done) 
+    return tsk_list
+
+#Get_Database('1')
+
 
