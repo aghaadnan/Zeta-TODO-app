@@ -8,22 +8,20 @@ def list_task(stub):
 def get_task(stub):
     
     ''' Get function is define in todo_server.py file to get task by id'''
-    ID = todo_pb2.TodoId()
-    ID.id = '2'
-    tasks = stub.Get(bin(ID))
+    
+    tasks = stub.Get( todo_pb2.TodoId(id='2'))
+    '''for now id is hardcode but will be given by user ''' 
     if not tasks:
-        print("NO task found against awd")
-        return
+        print("NO task found against task")
     else:
         print(tasks)
     
 def run():
     channel = grpc.insecure_channel('localhost:50051') 
     stub = todo_pb2_grpc.TodosServiceStub(channel)
-    print("-------------- ListFeature --------------")
-    list_task(stub)
-    print("-------------- GetFeatures --------------")
+    print("-------------- ListTasks --------------")
+    #list_task(stub)
+    print("-------------- GetTasks --------------")
     get_task(stub)
 
 run()
-
