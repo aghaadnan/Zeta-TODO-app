@@ -20,7 +20,9 @@ router.get('/todo/api/v1.0/tasks',function(req,res){
 tasks.findAll().then(function(result){
     if(result){
         
-         res.status(200).send(result);
+        res.status(200).send({sucess:true,result:result});
+    }else{
+        res.status(404).send({sucess:false,message:"No data found"});
     }
     
 });
@@ -33,9 +35,9 @@ router.get('/todo/api/v1.0/tasks/:taskid',function(req,res){
     tasks.findById(id).then(function(result){
         
         if(result){
-        res.status(200).send(result);}
+        res.status(200).send({sucess:true,result:result});}
         else{
-            res.status(400).send("No data found");
+            res.status(404).send({sucess:false,message:"No data found"});
         }
     });
 });
@@ -45,9 +47,21 @@ router.post('/todo/api/v1.0/tasks',function(req,res){
     var title=req.body.title;
     var discription= req.body.discription;
     
+
+
+  if(title && discription){
     tasks.create({title:title,discription:discription});
-    res.send("Titile : "+ title +"    Description :"+ discription);
-    res.end("Request to tasks with Post method arrives");
+    res.status(200).send({sucess:true,message:'Successfully created'});
+}
+else if(!title){
+    res.status(404).send({sucess:false,message:'Invalid title'});
+}
+else if(!discription){
+    res.status(404).send({sucess:false,message:'Invalid discription'});
+}
+
+    
+    
 });
 
 //updating tasks against id
@@ -55,14 +69,33 @@ router.put('/todo/api/v1.0/tasks/:taskid',function(req,res){
 var id = req.params.taskid;
 var title = req.body.title;
 var discription= req.body.discription;
+
 var done = req.body.done;
-console.log(req.body.title);
+
 tasks.findById(id).then(function(project){
+    if(project){
+
+
+    if(title && discription){
+
     project.updateAttributes({
         title:title,
         discription:discription,
         done:done
-    });
+});
+          res.status(200).send({sucess:true,message:'Successfully updated'});
+            
+            }
+        else if(!title)
+         res.status(404).send({sucess:false,message:'Invalid title'});
+         else if(!discription)  
+         res.status(404).send({sucess:false,message:'Invalid DISCRIPTION'});
+
+
+        }
+   else{
+                res.status(404).send({sucess:false,message:'Invalid id'});
+            }
 });
 
 

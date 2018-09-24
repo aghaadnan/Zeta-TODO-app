@@ -23,14 +23,16 @@
            
            var title=document.querySelector('#title').value;
            var discription = document.querySelector('#discription').value;
-           var obj={title:title,discription:discription}
-           fetch("todo/api/v1.0/tasks/1",{
-               method:'DELETE',
-               headers: {
-            "Content-Type": "application/json",
-            // "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body:JSON.stringify({title:"This is title"})
+           var data={title:"This is title by put ",discription:"This is discritption by put",done:true};
+          
+           fetch('todo/api/v1.0/tasks/10', {
+  method: 'PUT', // or 'PUT'
+  body: JSON.stringify(data), // data can be `string` or {object}!
+  headers:{
+    'Content-Type': 'application/json'
+  }
+}).then(function(data){
+               data.json().then(function(data1){alert(data1.message);});
            });
        }
    </script>
