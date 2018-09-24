@@ -2,7 +2,7 @@ var express= require('express');
 var  Sequelize = require('sequelize');
 var router = express.Router();
 
-var db = new Sequelize("postgres://postgres:hanzala12@localhost:5432/Tasks");
+var db = new Sequelize("postgres://iwfykmna:c4k4f0PYKKFF8JRnTPBbdkGhH3dtY-R8@elmer.db.elephantsql.com:5432/iwfykmna");
 
 
 
