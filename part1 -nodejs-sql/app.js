@@ -13,8 +13,10 @@ app.use(function(req,res,next){
     console.log(req.url);
     next();
 });
+
 app.use(express.static(path.resolve(__dirname)));
 app.use(parser.urlencoded({extended:false}));
 app.use(parser.json());
 app.use(router);
  http.createServer(app).listen(port);
+ module.exports=app;

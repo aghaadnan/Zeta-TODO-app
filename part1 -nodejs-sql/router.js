@@ -20,9 +20,9 @@ router.get('/todo/api/v1.0/tasks',function(req,res){
 tasks.findAll().then(function(result){
     if(result){
         
-        res.status(200).send({sucess:true,result:result});
+        res.send({sucess:true,result:result});
     }else{
-        res.status(404).send({sucess:false,message:"No data found"});
+        res.send({sucess:false,message:"No data found"});
     }
     
 });
@@ -35,9 +35,9 @@ router.get('/todo/api/v1.0/tasks/:taskid',function(req,res){
     tasks.findById(id).then(function(result){
         
         if(result){
-        res.status(200).send({sucess:true,result:result});}
+        res.send({sucess:true,result:result});}
         else{
-            res.status(404).send({sucess:false,message:"No data found"});
+            res.send({sucess:false,message:"No data found"});
         }
     });
 });
@@ -51,13 +51,13 @@ router.post('/todo/api/v1.0/tasks',function(req,res){
 
   if(title && discription){
     tasks.create({title:title,discription:discription});
-    res.status(200).send({sucess:true,message:'Successfully created'});
+    res.send({sucess:true,message:'Successfully created'});
 }
 else if(!title){
-    res.status(404).send({sucess:false,message:'Invalid title'});
+    res.send({sucess:false,message:'Invalid title'});
 }
 else if(!discription){
-    res.status(404).send({sucess:false,message:'Invalid discription'});
+    res.send({sucess:false,message:'Invalid discription'});
 }
 
     
@@ -83,35 +83,35 @@ tasks.findById(id).then(function(project){
         discription:discription,
         done:done
 });
-          res.status(200).send({sucess:true,message:'Successfully updated'});
+          res.send({sucess:true,message:'Successfully updated'});
             
             }
         else if(!title)
-         res.status(404).send({sucess:false,message:'Invalid title'});
+         res.send({sucess:false,message:'Invalid title'});
          else if(!discription)  
-         res.status(404).send({sucess:false,message:'Invalid DISCRIPTION'});
+         res.send({sucess:false,message:'Invalid DISCRIPTION'});
 
 
         }
    else{
-                res.status(404).send({sucess:false,message:'Invalid id'});
+                res.send({sucess:false,message:'Invalid id'});
             }
 });
 
 
 });
 
-//deleting taks against given id
+//deleting task against given id
 router.delete("/todo/api/v1.0/tasks/:taskid",function(req,res){
     console.log("Delete request arrives");
     var id = req.params.taskid;
     tasks.findById(id).then(function(project){
         if(project){
         project.destroy();
-        res.status(200).send({sucess:true});
+        res.send({sucess:true});
         }
         else{
-            res.status(404).send({success:false});
+            res.send({success:false});
         }
     })
 });
