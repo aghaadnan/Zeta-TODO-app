@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "todo-test-zeta",
+  "private_key_id": "78a56181ef74e69217f2b160178270aea496390c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDHIHxgehiQhEVn\nDYfvudkVYxb4mnGU8i40rAwJQQiWQK4HiSk4HeMPqbwDjCI7cl+2hWj/HVitpNjc\nYltmLIwX+GXw7H5AOlJ9roMNnUpUZvaYk8T41dDUUGLoICALZrRMt7jCQiXoyOgZ\nRyuYGeeV0wRNceB28W5crFtPxZYo1dzHFgyre+EFVRLScTKVMWl5Zkgc3Qu5GNTI\n1kbQNinXjfUeulfZtaSNEKe00/pMhkSdTjeiu818nCjJU4q08SCd7ajXAZD0+hUI\nmgMqOxsapG66DChnO2fDlXdcyQlHX3Zhrz6bDBp5faiawEWbKH4jnQfmg/GozVuE\nZqUZWjGtAgMBAAECggEAWiHduou5j7yXb5CD3eJZHSGnlarOy7UdbhEMN6ocuWoY\ne+e9ZR2+F+pj5JUrL45TPZpAju1ZJOwvjv3kUijK1tTES9u4P9lGWoZB4sk2CmM6\nrpCAgYPCzT9/rYNRDegUp38nnaJ0Z1x9FmgNFwFuvnXwBiAMErqwkjkf8clFcUCj\n9A17CmlFkvEX53UDoH5vPeWe3i9NAdZqEsoF16ntoH3WnRxfa5g16jW8Tbu8iNzj\nXr6sDJdlpsuWAqFPC0UoZFtLf0rBxk70ilEdZoP6BlRPMByLJGvbYejk83ze8qqM\nYV66iIEENi56xR5DQXhx2kv8SafuQc5kg0jpuvrPTwKBgQDpwN5l3RRB9IzhURnI\nvkgGriFhf6BIp4Jt5DN+/YfoqrFzDQKr+Y2xhBnAKQpxD5nIRsE6BFzqJ1X1FMsD\nRpZ8Y8ObvMoZrU+wuv9rO5sjkiJWVQR17ag664pNsZWWDsAXdFCJkUsdKQEQfTbi\nFJLRDJuNjjELmkYLnpgYz/esIwKBgQDaE/uJCMQFblCr3yYIYfJQ1jaFb2pt8Val\nOYbcpA9Xlm9SiDsxuqUy0aIHpAT+T0EVANEz6B4RMdr0zgKa9JXRu3R4znHG96S0\nv4m96TO7J/03lWX53Hxhkekpkg4eMOYb9vPT0H6ShunZM2iioj3Y8LmljJJCfSzA\niGpRCPrf7wKBgHgmMKo/Jqh4IOm3m/84/yCf5HyO8z4lC7+canO9sVwAUNGIQHVR\nAmnaMro43isbD7qH084UbAXXTjF5DJiUccliJisosODd2nZGx/7AVo/ED248qNxM\n2gnfA+nHe9HzpvznRnZPfkJwzyFAmzM9y/Ez/8iU69TA6XwTeq5WR0HtAoGBAMmR\n7s2a7JSYgrhaai0VW4Sce4iakyVMDWpq4dzPR98NjZgbk5tDia6PVdT6JiNp3h4r\nwzLXOfNqwZfFU2Mm79QMEHwZVdEy1Wq8H/UJuGclb0gRL1DkG5OT6pAiECqXyBnR\nCU6fSF7nlP7OJcktbT04RGBgrlAGo3bSoHKGelzBAoGBAIuSa+8JRLW4Z1omsiCM\nwRlFNtHd50NpwnnD2+jGuiNQMdQX2QqBJt3tYtstX87TDX9t9LeoL5CDJYJO3pqY\n+uKeXmyBaoCQmTtgVhk3w1f7s1dFy86jpFfMfHBbAY8OEH1XPH1bcTYlA2ZTDRws\nMnNS1nNCEIuuMXelmuulbGSC\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-5lftl@todo-test-zeta.iam.gserviceaccount.com",
+  "client_id": "103515488461610935867",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-5lftl%40todo-test-zeta.iam.gserviceaccount.com"
+}

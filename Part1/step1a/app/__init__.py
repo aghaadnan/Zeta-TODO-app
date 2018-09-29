@@ -15,7 +15,7 @@ def create_app(config_name):
     mongo = PyMongo(app)
 
 
-    @app.route('/todo/api/v1.0/tasks',methods=['GET'])
+    @app.route('/todo/api/v1.0/tasks/',methods=['GET'])
     def get_all_tasks():
         todo=mongo.db.Tasks
 
@@ -53,7 +53,7 @@ def create_app(config_name):
             response.status_code=404
         return response
 
-    @app.route('/todo/api/v1.0/tasks',methods=['POST'])
+    @app.route('/todo/api/v1.0/tasks/',methods=['POST'])
     def add_task():
         todo=mongo.db.Tasks
         task_desc=str(request.data.get('task_desc', ''))

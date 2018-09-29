@@ -1,10 +1,9 @@
 """Database models"""
-from app import db ,create_app
-from config import config
-
+from app import db
 class todoList(db.Model):
     """this class represent the todotask table"""
     __tablename__ = "todoTask"
+    
     id = db.Column(db.Integer, primary_key=True,unique=True)
     title = db.Column(db.String(225))
     description = db.Column(db.Text)
@@ -26,4 +25,4 @@ class todoList(db.Model):
     def get_all():
         return todoList.query.all()    
 
-db.create_all(app=create_app("development"))
+

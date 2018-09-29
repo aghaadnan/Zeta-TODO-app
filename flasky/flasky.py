@@ -1,7 +1,7 @@
 from flask import Flask ,request,jsonify
 from flask_restful import Resource, Api
-from app import create_app
-app = create_app("default")
+from app import create_app,db
+app = create_app("testing")
 
 api = Api(app)
 
@@ -22,4 +22,5 @@ def test():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
+    db.create_all()
