@@ -11,16 +11,17 @@ class TasklistTestCase(unittest.TestCase):
         """Define test variables and initialize app."""
         self.app = create_app(config_name="testing")
         self.client = self.app.test_client
-        self.task_desc = {'title':'test','description': 'do homework','done':'false'}
+        self.task_desc = {'title':'test','description': 'do homework hi','done':'false'}
         self.edit="this is edited"
 
-
-
+    def test_connection(self):
+        self.assertTrue(self.app.config['DEBUG'])
 
 
     def test_tasklist_creation(self):
         """Test API can create a tasklist (POST request)"""
         res = self.client().post('/todo/api/v1.0/tasks/', data=self.task_desc)
+        print(res)
         self.assertEqual(res.status_code, 201)
         self.assertIn('do homework', str(res.data))
 
@@ -36,9 +37,9 @@ class TasklistTestCase(unittest.TestCase):
         """Test API can get a single tasklist by using it's id."""
         rv = self.client().post('/todo/api/v1.0/tasks/', data=self.task_desc)
         self.assertEqual(rv.status_code, 201)
-        result_in_json = json.loads(rv.data.decode('utf-8').replace("'", "\""))
+        # result_in_json = json.loads(rv.data.decode('utf-8').replace("'", "\""))
         result = self.client().get(
-        '/todo/api/v1.0/tasks/{}'.format(result_in_json['id']))
+        '/todo/api/v1.0/tasks/-LN_IwTc4aa9L9bUCuZm')
         self.assertEqual(result.status_code, 200)
         self.assertIn('do homework', str(result.data))
 
@@ -48,11 +49,11 @@ class TasklistTestCase(unittest.TestCase):
             '/todo/api/v1.0/tasks/',
             data=self.task_desc)
         self.assertEqual(rv.status_code, 201)
-        rv = self.client().put('/todo/api/v1.0/tasks/1',data={
+        rv = self.client().put('/todo/api/v1.0/tasks/-LN_IwTc4aa9L9bUCuZm',data={
                 "task_desc": "this is edited :-)"
             })
         self.assertEqual(rv.status_code, 200)
-        results = self.client().get('/todo/api/v1.0/tasks/1')
+        results = self.client().get('/todo/api/v1.0/tasks/-LN_IwTc4aa9L9bUCuZm')
         self.assertIn('this is edited', str(results.data))
 
     def test_tasklist_deletion(self):
@@ -61,10 +62,10 @@ class TasklistTestCase(unittest.TestCase):
             '/todo/api/v1.0/tasks/',
             data=self.task_desc)
         self.assertEqual(rv.status_code, 201)
-        res = self.client().delete('/todo/api/v1.0/tasks/1')
+        res = self.client().delete('/todo/api/v1.0/tasks/-LN_KvLQSoCx-Vp28lBk')
         self.assertEqual(res.status_code, 200)
         # Test to see if it exists, should return a 404
-        result = self.client().get('/todo/api/v1.0/tasks/1')
+        result = self.client().get('/todo/api/v1.0/tasks/-LN_KvLQSoCx-Vp28lBk')
         self.assertEqual(result.status_code, 404)
 
 
