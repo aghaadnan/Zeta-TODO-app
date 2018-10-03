@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+
+
+service TODOService {
+  rpc tasks (Empty) returns (taskList) {}
+  rpc task (id) returns (task){}
+  rpc update (task) returns (Empty){}
+  rpc insert (task) returns (Empty) {}
+  rpc delete (id) returns (Empty){}
+}
+
+
+message Empty {}
+message task {
+  string id = 1;
+  string title = 2;
+  string discription = 3;
+  bool done =4;
+  
+}
+message taskList {
+  repeated task tasks = 1;
+}
+message id{
+  string id=1;
+}
+ 
